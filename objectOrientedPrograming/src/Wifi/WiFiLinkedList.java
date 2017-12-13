@@ -5,8 +5,7 @@ package Wifi;
 import java.util.LinkedList;
 
 public class WiFiLinkedList {
-	//private static int ID = 0;
-	LinkedList<WiFi> LLWF;
+	public LinkedList<WiFi> LLWF;
 	private double LAT,LON,ALT;
 	private String Time;
 	private String UID;
@@ -34,18 +33,21 @@ public class WiFiLinkedList {
 		this.Time = time;
 		this.UID = id;
 	}
+	public WiFi get(int index){
+		return LLWF.get(index);
+	}
+	public int getSize(){
+		return LLWF.size();
+	}
 	public void add(WiFi wf){
 		LLWF.add(wf);
 	}
 	public boolean IsBelong(double LAT, double LON, String Time){
+		if (Time == null)
+			return true;
 		return (LAT==this.LAT && LON==this.LON && Time.equals(this.Time));
 	}
 	public WiFi[] getArrWiFi(){
-//		WiFi[] arr = new WiFi[LLWF.size()];
-//		for (int i = 0; i < arr.length; i++) {
-//			arr[i] = LLWF.get(i);
-//		}
-		
 		return LLWF.toArray(new WiFi[LLWF.size()]);
 	}
 	public void setWiFiList(WiFi[] arr){
@@ -92,4 +94,9 @@ public class WiFiLinkedList {
 		// TODO Auto-generated method stub
 		return LAT;
 	}
+	public String getUID() {
+		// TODO Auto-generated method stub
+		return UID;
+	}
+	
 }
